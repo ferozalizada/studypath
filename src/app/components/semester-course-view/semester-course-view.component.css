@@ -1,0 +1,29 @@
+#semesterCourseView{
+    margin-top:20px;
+    height:30%;
+}
+
+#semesterCourseView h5{
+    margin-top:5px;
+}
+
+#semesterCourseView div{
+    margin-top:10px;
+    margin-bottom:5px;
+}
+
+#firstDivChild{  
+    padding-left:0px !important;
+}
+
+.scvDivs{
+    float:left;
+    padding-right:20px;
+    padding-left:20px;
+    border-right:3px solid rgb(168, 168, 168);
+}
+
+#lastDivChild{
+    padding-right: 0px !important;
+    border-right:none;
+}
