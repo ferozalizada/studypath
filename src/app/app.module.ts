@@ -12,6 +12,7 @@ import { SemesterListService } from './services/semester-list.service';
 import { SemesterViewComponent } from './components/semester-view/semester-view.component';
 import { SemesterCourseViewComponent } from './components/semester-course-view/semester-course-view.component';
 import { ApiRequestsService } from './services/api-requests.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ApiRequestsService } from './services/api-requests.service';
     CourseListComponent,
     SemesterDropdownComponent,
     SemesterViewComponent,
-    SemesterCourseViewComponent
+    SemesterCourseViewComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
