@@ -1,0 +1,8 @@
+.navbar{
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #242492, #23198a, #1b107a);
+  background: linear-gradient(to right, #2a2a86, #3025aa, #190c91); 
+}
+.navbar *{
+  color: #ffffff;
+}
