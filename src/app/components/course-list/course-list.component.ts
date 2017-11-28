@@ -28,7 +28,7 @@ export class CourseListComponent implements OnInit {
    // this.apiRequestsService.getAllCourses(this);
     //this.apiRequestsService.getSemester(this);
     
-    this.apiRequestsService.getSectionByCourse2(this.updateComponent.bind(this));
+    this.apiRequestsService.getSectionByCourse(this.updateComponent.bind(this));
     
     //this.apiRequestsService.addSemester();
     //apiRequestsService.getUsers();

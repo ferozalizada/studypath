@@ -31,8 +31,9 @@ app.get('/acessdenied', function(req,res){
 });
 
 app.all('*', function(req,res,next){
-	//deny all request unless they enter specific params
-	if(allowedUrl.indexOf(req.url) == -1){
+    //deny all request unless they enter specific params
+    var reqParts = req.url.split("?");
+	if(allowedUrl.indexOf(reqParts[0]) == -1){
         console.log(req.url);
 		res.redirect('/acessdenied');
 	}
@@ -68,6 +69,7 @@ app.post('/api/addSemester', function(req, res){
 app.get('/api/getOneSection', function(req,res) {
    //console.log(req.query.user_id);
    // console.log(req.user_id);
+   console.log(req.query.id);
     api.getAllDocuments('semesters',res);
 });
 

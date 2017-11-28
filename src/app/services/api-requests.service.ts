@@ -26,19 +26,19 @@ constructor(private http: HttpClient) {}
   
   getAllCourses(callback){
     this.http.get<Course>(AppSettings.constants.API_ENDPOINT + '/getAllCourses').subscribe(data => { 
-      callback(data.results);
+      callback(data);
     });
   }
   
   getAllSections(callback){
     this.http.get<Section>(AppSettings.constants.API_ENDPOINT + '/getAllSections').subscribe(data => { 
-      callback(data.results);
+      callback(data);
     });
   }
   
   getAllCourseItems(callback){
     this.http.get<CourseItem>(AppSettings.constants.API_ENDPOINT + '/getAllCourseItems').subscribe(data => { 
-      callback(data.results);
+      callback(data);
     });
   }
   
@@ -54,18 +54,20 @@ constructor(private http: HttpClient) {}
     var url = AppSettings.constants.API_ENDPOINT + '/getOneSection2'
     var data = {user_id:1};
     this.http.post<Section>(url, data).subscribe(data=> {
-        callback(data.results);
+        callback(data);
     });
   }
   
   getSectionByCourse(callback){
-    let params = new HttpParams();
+    //let params = new HttpParams();
     //params = params.append('user_id',1);
     
+    //this is how to pass params in get request 
+    //DONT USE THIS IN POST SINCE ITS GOING TO SHOW PARAMS IN URL
     this.http.get<Section>(AppSettings.constants.API_ENDPOINT + '/getOneSection', {
-      params:params
+      params:new HttpParams().set('id','LMAO')
     }).subscribe(data => {
-      callback(data.results);
+      callback(data);
     });
   }
 
