@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../classes/course';
 
+/*
 @Injectable()
 export class CourseDataService {
   private courses:Course[];
@@ -65,3 +66,4 @@ export class CourseDataService {
   }
 
 }
+*/

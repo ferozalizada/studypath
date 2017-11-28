@@ -1,57 +1,72 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+import { URLSearchParams } from '@angular/http';
 
 import { AppSettings } from '../classes/app-settings';
 import { Semester } from '../classes/semester';
+import { Course } from '../classes/course';
+import { Section } from '../classes/section';
+import { CourseItem } from '../classes/courseItem';
 
-import { Course } from '../interfaces/course';
 import { RequestStatus } from '../interfaces/request-status';
+
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ApiRequestsService {
 
+constructor(private http: HttpClient) {}
+
+  
+
   results: string[];
-
-  constructor(private http: HttpClient) {}
-
-  getCourse(){
-    //To code later, needs some filter for the query
-  }
-
-  getAllCourses(){
+  
+  // Functions for returning ALL elements in a collection
+  
+  getAllCourses(callback){
     this.http.get<Course>(AppSettings.constants.API_ENDPOINT + '/getAllCourses').subscribe(data => { 
-      this.results = data.results
-      console.log(this.results);
-    });
-    //return this.results;
-  }
-
-  addCourse(){
-    //To code later
-  }
-
-  addManyCourses(){
-    //To code later
-  }
-
-  getSemester(){
-    //To code later, needs some filter for the query
-  }
-
-  getAllSemesters(){
-    this.http.get<Semester>(AppSettings.constants.API_ENDPOINT + '/getAllSemesters').subscribe(data => {
-      console.log(data.getSeason() + " " + data.getYear());
+      callback(data.results);
     });
   }
-
-  addSemester(semester:Semester){
-    this.http.post<RequestStatus>(AppSettings.constants.API_ENDPOINT + '/addSemester', semester).subscribe(status => {
-      console.log(status.success + ", " + status.message);
+  
+  getAllSections(callback){
+    this.http.get<Section>(AppSettings.constants.API_ENDPOINT + '/getAllSections').subscribe(data => { 
+      callback(data.results);
     });
   }
-
-  addManySemesters(semesters:Semester[]){
-    //To code later
+  
+  getAllCourseItems(callback){
+    this.http.get<CourseItem>(AppSettings.constants.API_ENDPOINT + '/getAllCourseItems').subscribe(data => { 
+      callback(data.results);
+    });
+  }
+  
+  // Functions for returning specific elements from a collection
+  /*
+  
+    Having trouble figuring out how to pass parameters (namely id for which section to grab)
+    without api.js encourtering a fatal error
+  
+  */
+  
+  getSectionByCourse2(callback) {
+    var url = AppSettings.constants.API_ENDPOINT + '/getOneSection2'
+    var data = {user_id:1};
+    this.http.post<Section>(url, data).subscribe(data=> {
+        callback(data.results);
+    });
+  }
+  
+  getSectionByCourse(callback){
+    let params = new HttpParams();
+    //params = params.append('user_id',1);
+    
+    this.http.get<Section>(AppSettings.constants.API_ENDPOINT + '/getOneSection', {
+      params:params
+    }).subscribe(data => {
+      callback(data.results);
+    });
   }
 
 }

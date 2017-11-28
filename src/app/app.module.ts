@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
-import { CourseDataService } from './services/course-data.service';
+//import { CourseDataService } from './services/course-data.service';
 import { SemesterDropdownComponent } from './components/semester-dropdown/semester-dropdown.component';
 import { SemesterListService } from './services/semester-list.service';
 import { SemesterViewComponent } from './components/semester-view/semester-view.component';
@@ -30,7 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpClientModule
   ],
   providers: [
-    CourseDataService,
+    //CourseDataService,
     SemesterListService,
     ApiRequestsService
   ],
