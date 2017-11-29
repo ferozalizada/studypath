@@ -1,15 +1,12 @@
 <app-navbar></app-navbar>
-<div class="row">
-    <app-calendar class="col-9"></app-calendar>
-    <app-course-list class="col-3"></app-course-list>
-</div>
-
-<!--<div class="row">
-    <div class="col-8 offset-md-1">
-        <app-semester-dropdown></app-semester-dropdown>
-        <app-semester-view></app-semester-view>
-        <app-semester-course-view></app-semester-course-view>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-4">
+        <router-outlet name="aside"></router-outlet>
     </div>
 
-    <app-course-list class="col-3"></app-course-list>
-</div>-->
+  </div>
+</div>
