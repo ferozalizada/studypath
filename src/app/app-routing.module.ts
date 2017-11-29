@@ -3,35 +3,54 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 //Imports all the components 
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { CourseListComponent } from './components/course-list/course-list.component';
-import { SemesterCourseViewComponent } from './components/semester-course-view/semester-course-view.component';
-import { SemesterDropdownComponent } from './components/semester-dropdown/semester-dropdown.component';
-import { SemesterViewComponent } from './components/semester-view/semester-view.component';
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
+import { CalendarComponent } from './components/scheduler/calendar/calendar.component';
+import { CourseListComponent } from './components/scheduler/course-list/course-list.component';
+
+import { SemesterInfoComponent } from './components/semester-info/semester-info.component'; 
+import { SemesterCourseViewComponent } from './components/semester-info/semester-course-view/semester-course-view.component';
+import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';
+import { SemesterViewComponent } from './components/semester-info/semester-view/semester-view.component';
 
 //Adds the routes the components and provides the http path for them 
 const routes: Routes = [
   {
-    path : 'course-list',
-    component: CourseListComponent,
-    outlet: 'aside'
+    path: 'scheduler',
+    component: SchedulerComponent,
+    children: [
+      {
+        path: 'course-list',
+        component: CourseListComponent,
+        outlet: 'course-list-gui'
+      },
+      {
+        path: 'calendar',
+        component: CalendarComponent,
+        outlet: 'timetable-gui'
+      }      
+    ]
   },
   {
-    path: 'calendar',
-    component: CalendarComponent
+    path: 'semester-info',
+    component: SemesterInfoComponent,
+    children: [
+      {
+        path: 'semester-view',
+        component: CourseListComponent,
+        outlet: 'sv'
+      },
+      {
+        path: 'semester-course-view',
+        component: CalendarComponent,
+        outlet: 'scv'
+      },
+      {
+        path: 'semester-dropdown',
+        component: SemesterDropdownComponent,
+        outlet: 'sd'
+      }
+    ]
   },
-  {
-    path: 'semester-course-view',
-    component: SemesterCourseViewComponent
-  },
-  {
-    path: 'semester-view',
-    component: SemesterViewComponent
-  },
-  {
-    path: 'semester-dropdown',
-    component: SemesterDropdownComponent
-  }
 ];
 
 @NgModule({

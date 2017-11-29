@@ -16,11 +16,14 @@ import { ApiRequestsService } from './services/api-requests.service';
 
 //Imports the required components
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
-import { CourseListComponent } from './components/course-list/course-list.component';
-import { SemesterViewComponent } from './components/semester-view/semester-view.component';
-import { SemesterCourseViewComponent } from './components/semester-course-view/semester-course-view.component';
-import { SemesterDropdownComponent } from './components/semester-dropdown/semester-dropdown.component';
+import { SchedulerComponent } from './components/scheduler/scheduler.component';
+import { CalendarComponent } from './components/scheduler/calendar/calendar.component';
+import { CourseListComponent } from './components/scheduler/course-list/course-list.component';
+
+import { SemesterInfoComponent } from './components/semester-info/semester-info.component';
+import { SemesterViewComponent } from './components/semester-info/semester-view/semester-view.component';
+import { SemesterCourseViewComponent } from './components/semester-info/semester-course-view/semester-course-view.component';
+import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
@@ -31,7 +34,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SemesterDropdownComponent,
     SemesterViewComponent,
     SemesterCourseViewComponent,
-    NavbarComponent
+    NavbarComponent,
+    SchedulerComponent,
+    SemesterInfoComponent
   ],
   imports: [
     BrowserModule,
