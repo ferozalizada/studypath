@@ -21,6 +21,7 @@ import { CalendarComponent } from './components/scheduler/calendar/calendar.comp
 import { CourseListComponent } from './components/scheduler/course-list/course-list.component';
 
 import { SemesterInfoComponent } from './components/semester-info/semester-info.component';
+
 import { SemesterViewComponent } from './components/semester-info/semester-view/semester-view.component';
 import { SemesterCourseViewComponent } from './components/semester-info/semester-course-view/semester-course-view.component';
 import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';

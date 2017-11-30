@@ -1,3 +1,16 @@
-<p>
-  semester-info works!
-</p>
+<!-->Create a page and routes the course-list and calendar components into the view<-->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 center">
+      <app-semester-dropdown></app-semester-dropdown>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        <app-semester-view></app-semester-view>
+    </div>
+    <div class="col-md-9">
+      <app-semester-course-view></app-semester-course-view>
+    </div>
+  </div>
+</div>

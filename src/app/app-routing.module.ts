@@ -15,6 +15,27 @@ import { SemesterViewComponent } from './components/semester-info/semester-view/
 //Adds the routes the components and provides the http path for them 
 const routes: Routes = [
   {
+    path: 'semester-info',
+    component: SemesterInfoComponent,
+    children: [
+      {
+        path: 'semester-view',
+        component: SemesterViewComponent,
+        outlet: 'sv'
+      },
+      {
+        path: 'semester-course-view',
+        component: SemesterCourseViewComponent,
+        outlet: 'scv'
+      },
+      {
+        path: 'semester-dropdown',
+        component: SemesterDropdownComponent,
+        outlet: 'sd'
+      }
+    ]
+  },
+  {
     path: 'scheduler',
     component: SchedulerComponent,
     children: [
@@ -27,30 +48,10 @@ const routes: Routes = [
         path: 'calendar',
         component: CalendarComponent,
         outlet: 'timetable-gui'
-      }      
-    ]
-  },
-  {
-    path: 'semester-info',
-    component: SemesterInfoComponent,
-    children: [
-      {
-        path: 'semester-view',
-        component: CourseListComponent,
-        outlet: 'sv'
-      },
-      {
-        path: 'semester-course-view',
-        component: CalendarComponent,
-        outlet: 'scv'
-      },
-      {
-        path: 'semester-dropdown',
-        component: SemesterDropdownComponent,
-        outlet: 'sd'
       }
     ]
-  },
+  }
+  
 ];
 
 @NgModule({
