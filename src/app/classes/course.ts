@@ -7,6 +7,10 @@ export class Course {
     constructor(){ 
         //...
     }
+    
+    setId (id:number) {
+        this.id = id;
+    }
 
     setCode(code:string){
         this.code = code;

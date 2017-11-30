@@ -13,6 +13,10 @@ export class CourseItem {
         //...
     }
     
+    setId (id:number) {
+        this.id = id;
+    }
+    
     setSectionId(id:number)  {
         this.section_id = id;
     }

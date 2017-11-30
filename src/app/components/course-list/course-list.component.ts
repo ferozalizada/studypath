@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 //import { CourseDataService } from '../../services/course-data.service';
 import { Course } from '../../classes/course';
+import { Section } from '../../classes/section';
+import { Student } from '../../classes/student';
 import { ApiRequestsService } from '../../services/api-requests.service';
 import { Semester } from '../../classes/semester';
 
@@ -11,7 +13,7 @@ import { Semester } from '../../classes/semester';
 })
 export class CourseListComponent implements OnInit {
   courses:Course[];
-  results = [];
+  results:Section[];
   test:String;
 
   /*constructor(private courseDataService: CourseDataService) {
@@ -19,16 +21,26 @@ export class CourseListComponent implements OnInit {
   }*/
   
   updateComponent(data) {
-    this.results.push(data);
-    console.log("trest: " + this.results);
+    this.results = data.results;
+    console.log(data);
   }
 
   constructor(private apiRequestsService: ApiRequestsService) {
     
-   // this.apiRequestsService.getAllCourses(this);
-    //this.apiRequestsService.getSemester(this);
+    // Example of usage of semester class within student
     
-    this.apiRequestsService.getSectionByCourse(this.updateComponent.bind(this));
+    let nick = new Student(7,"Nick","Molinari");
+    nick.addSemester("Fall2014");
+    nick.addCourseToSemester("Fall2014", 12);
+    nick.addCourseToSemester("Fall2014", 15);
+    console.log(nick.getCoursesFromSemester("Fall2014"));
+    nick.removeCourseFromSemester("Fall2014",12);
+    console.log(nick.getCoursesFromSemester("Fall2014"));
+    
+    
+    //this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),7);
+    
+    //this.apiRequestsService.getStudentById(this.updateComponent.bind(this),10);
     
     //this.apiRequestsService.addSemester();
     //apiRequestsService.getUsers();

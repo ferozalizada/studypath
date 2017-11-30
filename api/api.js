@@ -18,7 +18,7 @@ exports.testConnection = function(){
 
 exports.insertOneDocument = function(collectionName, jsonObj, res){
 	MongoClient.connect(url, function(err, db) {
-		db.collection(collectiozbnName).insertOne(jsonObj).then(function(r) {
+		db.collection(collectionName).insertOne(jsonObj).then(function(r) {
 			assert.equal(1, r.insertedCount); //test
 			db.close();
 
@@ -28,8 +28,6 @@ exports.insertOneDocument = function(collectionName, jsonObj, res){
 		});
 	});
 }
-
-
 
 exports.getAllDocuments = function(collectionName, res){
 	MongoClient.connect(url, function(err,db){
@@ -42,12 +40,23 @@ exports.getAllDocuments = function(collectionName, res){
 	});
 };
 
-// This function works
-// Ie. if you substitute 'find({"index":user_id})' for 'find({"index":1})' it will return the right element from the collection
-// Just can't get app-requests.service to pass the user_id parameter to app.js
-exports.getOneDocument = function(collectionName, res, user_id){
+exports.getMatchingDocumentsWithString = function(collectionName, res, property, value){
 	MongoClient.connect(url, function(err,db){
-            db.collection(collectionName).find({"index":user_id}).toArray(function(err,docs){
+            query = {};
+            query[property] = value;
+            db.collection(collectionName).find(query).toArray(function(err,docs){
+                assert.equal(err, null); //test
+                db.close();
+                res.json( {results: docs} ); //json response
+            });
+	});
+};
+
+exports.getMatchingDocumentsWithInt = function(collectionName, res, property, value){
+	MongoClient.connect(url, function(err,db){
+            query = {};
+            query[property] = parseInt(value);
+            db.collection(collectionName).find(query).toArray(function(err,docs){
                 assert.equal(err, null); //test
                 db.close();
                 res.json( {results: docs} ); //json response
