@@ -16,6 +16,7 @@ exports.testConnection = function(){
 	});
 }
 
+// Inserts one document to given collection
 exports.insertOneDocument = function(collectionName, jsonObj, res){
 	MongoClient.connect(url, function(err, db) {
 		db.collection(collectionName).insertOne(jsonObj).then(function(r) {
@@ -29,6 +30,7 @@ exports.insertOneDocument = function(collectionName, jsonObj, res){
 	});
 }
 
+// Returns all documents from given collection
 exports.getAllDocuments = function(collectionName, res){
 	MongoClient.connect(url, function(err,db){
             db.collection(collectionName).find({}).toArray(function(err,docs){
@@ -40,22 +42,12 @@ exports.getAllDocuments = function(collectionName, res){
 	});
 };
 
-exports.getMatchingDocumentsWithString = function(collectionName, res, property, value){
+// Returns all documents from given collection matching given query 
+// (All documents where property = value)
+exports.getMatchingDocuments = function(collectionName, res, property, value){
 	MongoClient.connect(url, function(err,db){
             query = {};
             query[property] = value;
-            db.collection(collectionName).find(query).toArray(function(err,docs){
-                assert.equal(err, null); //test
-                db.close();
-                res.json( {results: docs} ); //json response
-            });
-	});
-};
-
-exports.getMatchingDocumentsWithInt = function(collectionName, res, property, value){
-	MongoClient.connect(url, function(err,db){
-            query = {};
-            query[property] = parseInt(value);
             db.collection(collectionName).find(query).toArray(function(err,docs){
                 assert.equal(err, null); //test
                 db.close();

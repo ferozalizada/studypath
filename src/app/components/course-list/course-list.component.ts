@@ -21,8 +21,10 @@ export class CourseListComponent implements OnInit {
   }*/
   
   updateComponent(data) {
-    this.results = data.results;
-    console.log(data);
+    this.results = data;
+    console.log(this.results);
+    /* If console logs 'undefined' or an empty array its just because
+       your database has no results for the given query */
   }
 
   constructor(private apiRequestsService: ApiRequestsService) {
@@ -38,7 +40,7 @@ export class CourseListComponent implements OnInit {
     console.log(nick.getCoursesFromSemester("Fall2014"));
     
     
-    //this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),7);
+    this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
     
     //this.apiRequestsService.getStudentById(this.updateComponent.bind(this),10);
     

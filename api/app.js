@@ -20,6 +20,7 @@ var allowedUrl = [
     '/api/addCourse',
     '/api/addSection',
     '/api/addCourseItem',
+    '/api/getNumberOfStudents'
 ];  
 
 //bodyParser used so we can read post variables sent in body
@@ -66,31 +67,32 @@ app.get('/api/getAllCourseItems',function(req,res) {
     api.getAllDocuments('courseitems',res);
 });
 
-// Get one from collection
-
+// Get one from collection by ID
 app.get('/api/getStudentById', function(req,res) {
-   api.getMatchingDocumentsWithInt('students',res,'id',req.query.student_id);
+   api.getMatchingDocuments('students',res,'id',parseInt(req.query.student_id));
 });
 
 app.get('/api/getCourseById', function(req,res) {
-   api.getMatchingDocumentsWithInt('courses',res,'id',req.query.course_id);
+   api.getMatchingDocuments('courses',res,'id',parseInt(req.query.course_id));
 });
 
 app.get('/api/getSectionById', function(req,res) {
-   api.getMatchingDocumentsWithInt('sections',res,'id',req.query.sec_id);
+   api.getMatchingDocuments('sections',res,'id',parseInt(req.query.sec_id));
 });
 
 app.get('/api/getCourseItemById', function(req,res) {
-   api.getMatchingDocumentsWithInt('courseitems',res,'id',req.query.courseitem_id);
+   api.getMatchingDocuments('courseitems',res,'id',parseInt(req.query.courseitem_id));
 });
 
 // Special parameter-based queries
+// Get all sections belonging to a specific course
 app.get('/api/getSectionsByCourse', function(req,res) {
-    api.getMatchingDocumentsWithInt('courses',res,'course_id',req.query.course_id);
+    api.getMatchingDocuments('sections',res,'course_id',parseInt(req.query.course_id));
 });
 
+// Get all course items belonging to a specific section
 app.get('/api/getCourseItemsBySection', function(req,res) {
-    api.getMatchingDocumentsWithInt('courseitems',res,'section_id',req.query.section_id);
+    api.getMatchingDocuments('courseitems',res,'section_id',parseInt(req.query.section_id));
 });
 
 // Add to database

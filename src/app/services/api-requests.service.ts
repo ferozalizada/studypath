@@ -27,32 +27,32 @@ constructor(private http: HttpClient) {}
   
   /* To do: add error handling for if databases are empty or if there are no results for specific query */
   
-  // Functions for returning ALL elements in a collection
+  // Functions for returning ALL documents in a collection
   getAllStudents(callback) {
-    this.http.get<Student>(AppSettings.constants.API_ENDPOINT + '/getAllStudents').subscribe(data => {
-      callback(data);
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getAllStudents').subscribe(data => {
+      callback(data.results);
     });
   }
   
   getAllCourses(callback){
-    this.http.get<Course>(AppSettings.constants.API_ENDPOINT + '/getAllCourses').subscribe(data => { 
-      callback(data);
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getAllCourses').subscribe(data => { 
+      callback(data.results);
     });
   }
   
   getAllSections(callback){
-    this.http.get<Section>(AppSettings.constants.API_ENDPOINT + '/getAllSections').subscribe(data => { 
-      callback(data);
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getAllSections').subscribe(data => { 
+      callback(data.results);
     });
   }
   
   getAllCourseItems(callback){
-    this.http.get<CourseItem>(AppSettings.constants.API_ENDPOINT + '/getAllCourseItems').subscribe(data => { 
-      callback(data);
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getAllCourseItems').subscribe(data => { 
+      callback(data.results);
     });
   }
   
-  // Functions for returning one result that matches a unique ID
+  // Functions for returning one document that matches a unique ID
   getStudentById (callback, student_id) {
     this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getStudentById', {
       params:new HttpParams().set('student_id',student_id.toString())
@@ -89,23 +89,23 @@ constructor(private http: HttpClient) {}
   
   // Returns array of all sections that belong to a certain course
   getSectionsByCourse(callback, course_id){
-    this.http.get<Section>(AppSettings.constants.API_ENDPOINT + '/getSectionsByCourse', {
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getSectionsByCourse', {
       params:new HttpParams().set('course_id',course_id.toString())
     }).subscribe(data => {
-      callback(data);
+      callback(data.results);
     });
   }
   
   //  Returns array of all course items (LEC, LAB, DGD...) that belong to a certain section
   getCourseItemsBySection(callback, section_id) {
-    this.http.get<CourseItem>(AppSettings.constants.API_ENDPOINT + '/getCourseItemsBySection', {
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getCourseItemsBySection', {
       params:new HttpParams().set('section_id',section_id.toString())
     }).subscribe(data => {
-      callback(data);
+      callback(data.results);
     });
   }
   
-  // Functions for inserting into database
+  // Functions for inserting document into collection
   addStudent(stu:Student){
     this.http.post<RequestStatus>(AppSettings.constants.API_ENDPOINT + '/addStudent', stu).subscribe(status => {
       console.log(status.success + ", " + status.message);
