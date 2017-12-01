@@ -23,7 +23,7 @@ export class Student {
     }
     
     addCourseToSemester (schedName:string, courseitems:CourseItem[]) {
-        //this.schedules[schedName].addCourse(course);
+        this.schedules[schedName].addCourse(courseitems);
     }
     
     removeCourseFromSemester (schedName:string, course_id:number) {

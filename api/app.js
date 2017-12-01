@@ -92,7 +92,6 @@ app.get('/api/getSectionsByCourse', function(req,res) {
 
 // Get all course items belonging to a specific section
 app.get('/api/getCourseItemsBySection', function(req,res) {
-    console.log('Checkpoint 3');
     api.getMatchingCourseItems('courseitems',res,'section_id',parseInt(req.query.section_id),req.query.item_type);
 });
 
