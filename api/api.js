@@ -55,3 +55,17 @@ exports.getMatchingDocuments = function(collectionName, res, property, value){
             });
 	});
 };
+
+exports.getMatchingCourseItems = function(collectionName, res, property, value, item_type){
+	MongoClient.connect(url, function(err,db){
+            console.log('Checkpoint 4');
+            query = {};
+            query[property] = value;
+            //query["type"] = item_type;
+            db.collection(collectionName).find(query).toArray(function(err,docs){
+                assert.equal(err, null); //test
+                db.close();
+                res.json( {results: docs} ); //json response
+            });
+	});
+};

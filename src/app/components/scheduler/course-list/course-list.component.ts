@@ -6,6 +6,8 @@ import { Student } from '../../../classes/student';
 import { ApiRequestsService } from '../../../services/api-requests.service';
 import { Semester } from '../../../classes/semester';
 
+import { StudentCourse } from '../../../classes/studentcourse';
+
 import { CourseDataService } from '../../../services/course-data.service';
 
 @Component({
@@ -36,6 +38,7 @@ export class CourseListComponent implements OnInit {
     
     // Example of usage of semester class within student
     
+    /*
     let nick = new Student(7,"Nick","Molinari");
     nick.addSemester("Fall2014");
     nick.addCourseToSemester("Fall2014", 12);
@@ -43,9 +46,30 @@ export class CourseListComponent implements OnInit {
     console.log(nick.getCoursesFromSemester("Fall2014"));
     nick.removeCourseFromSemester("Fall2014",12);
     console.log(nick.getCoursesFromSemester("Fall2014"));
+    */
+    
+    let nick = new Student(7,"Nick","Molinari");
+    nick.addSemester("Fall2014");
+    let newCourse = new StudentCourse('Math','MAT1312','B',[5,6]);
+    nick.addCourseToSemester("Fall2014",newCourse);
+    console.log(nick.getCoursesFromSemester("Fall2014"));
     
     
-    this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
+    //this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
+    
+    //console.log("Checkpoint 1");
+    
+    //this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),1,"LAB");
+    
+    /*
+    this.apiRequestsService.getAllStudents(this.updateComponent.bind(this));
+    this.apiRequestsService.getAllCourses(this.updateComponent.bind(this));
+    this.apiRequestsService.getAllSections(this.updateComponent.bind(this));
+    this.apiRequestsService.getAllCourseItems(this.updateComponent.bind(this));
+    
+    
+    this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),0,"LEC");
+    */
     
     //this.apiRequestsService.getStudentById(this.updateComponent.bind(this),10);
     

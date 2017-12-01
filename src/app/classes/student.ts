@@ -1,28 +1,7 @@
-// This is a helper class contained within the Student class
-// Keeps track of what courses the student has scheduled for a specific semester
-class SemesterSchedule {
-    private courses:number[];
-    
-    constructor() {
-        this.courses = [];
-    }
-    
-    addCourse(course_id:number) {
-        this.courses.push(course_id);
-    }
-    
-    removeCourse(course_id:number) {
-        var idx = this.courses.indexOf(course_id);
-        if (idx != -1) {
-            this.courses.splice(idx,1);
-        }
-    }
-    
-    getCourses() {
-        return this.courses;
-    }
-}
-    
+import { StudentCourse } from './studentcourse';
+import { SemesterSchedule } from './semesterschedule';
+import { CourseItem } from './courseitem';
+
 export class Student {
     
     private id:number;number;
@@ -39,20 +18,20 @@ export class Student {
         this.schedules = {};
     }
     
-    addSemester (key:string) {
-        this.schedules[key] = new SemesterSchedule();
+    addSemester (schedName:string) {
+        this.schedules[schedName] = new SemesterSchedule();
     }
     
-    addCourseToSemester (key:string, course_id:number) {
-        this.schedules[key].addCourse(course_id);
+    addCourseToSemester (schedName:string, courseitems:CourseItem[]) {
+        //this.schedules[schedName].addCourse(course);
     }
     
-    removeCourseFromSemester (key:string, course_id:number) {
-        this.schedules[key].removeCourse(course_id);
+    removeCourseFromSemester (schedName:string, course_id:number) {
+        this.schedules[schedName].removeCourse(course_id);
     }
     
-    getCoursesFromSemester (key:string) {
-        return this.schedules[key].getCourses();
+    getCoursesFromSemester (schedName:string) {
+        return this.schedules[schedName].getCourses();
     }
     
     setId (id:number) {
