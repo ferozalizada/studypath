@@ -1,15 +1,22 @@
-<!-- Example single danger button -->
 <form class="container-fluid">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="form-group">
-        <label >Select your Term:</label>
-        <select class="form-control" id="ddSemesters">
-          <option routerLink="semester-view" *ngFor="let semester of semesterList" value="{{semester.season}} {{semester.year}}">
-            {{semester.season}} {{semester.year}}
-          </option>
-        </select>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <label >Select your Term:</label>
+          <select class="form-control" id="ddSemesters">
+            <option  *ngFor="let semester of semesterList" value="{{semester.season}} {{semester.year}}" 
+            [class.selected]="semester === selectedSemester"
+            (click)="onSelectTerm(semester)">
+              {{semester.season}} {{semester.year}}
+            </option>
+          </select>
+          <div *ngIf="selectedSemester">
+            <p>{{selectedSemester}}<<- Deatails</p>
+          </div>
+          <label>name:
+              <input [(ngModel)]="selectedSemester" placeholder="name" name="semester">
+          </label>
+        </div>
       </div>
-    </div>
-  </div>  
-</form>
+    </div>  
+  </form>

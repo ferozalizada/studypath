@@ -1,5 +1,17 @@
-<ul class="list-group col-11">
-    <li class="list-group-item">List of courses available</li>
-    <li *ngFor="let course of courses" class="list-group-item">
-    </li>
-</ul>
+
+  <ul class="list-group">
+			<form class="input-group form-inline ">
+				<input class="form-control" type="search" placeholder="Search for Courses.." aria-label="Search">
+				<span class="input-group-btn">
+					<button class="btn btn-outline-success btn-sm glyphicon glyphicon-search">
+							<img src="https://png.icons8.com/search" width="20px" height="20px"> 
+					</button>
+				</span>
+			</form>
+			<li class="list-group-item">List of courses available</li>
+			<li *ngFor="let course of courses" class="list-group-item">
+		
+				<!--List of courses goes here-->
+				{{course}}
+			</li>
+		</ul>
