@@ -56,7 +56,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ModalModule.forRoot()
   ],
   providers: [
-    //CourseDataService,
+    CourseDataService,
     SemesterListService,
     ApiRequestsService
   ],
