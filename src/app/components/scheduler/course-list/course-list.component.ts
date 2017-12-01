@@ -9,6 +9,7 @@ import { Semester } from '../../../classes/semester';
 import { StudentCourse } from '../../../classes/studentcourse';
 
 import { CourseDataService } from '../../../services/course-data.service';
+import { constructDependencies } from '@angular/core/src/di/reflective_provider';
 
 @Component({
   selector: 'app-course-list',
@@ -20,6 +21,8 @@ export class CourseListComponent implements OnInit {
 
   results:Section[];
   test:String;
+  selectedObj: Course;
+  
 
 
   /*constructor(private courseDataService: CourseDataService) {
@@ -34,8 +37,10 @@ export class CourseListComponent implements OnInit {
        your database has no results for the given query */
   }
 
-  constructor(private apiRequestsService: ApiRequestsService) {
-    
+  constructor(private apiRequestsService: ApiRequestsService
+    ,private courseDataService: CourseDataService
+  ) {
+    this.courses = courseDataService.getAllCourses();
     // Example of usage of semester class within student
     
     /*
@@ -93,5 +98,8 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  selectCourse(course: Course):void{
+    this.selectedObj = course;
+    console.log("Selected Obj's code is: " + this.selectedObj.getCode());
+  }
 }

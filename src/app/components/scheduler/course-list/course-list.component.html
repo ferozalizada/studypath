@@ -9,8 +9,7 @@
 				</span>
 			</form>
 			<li class="list-group-item">List of courses available</li>
-			<li *ngFor="let course of courses" class="list-group-item">
-		
+			<li *ngFor="let course of courses" class="list-group-item"  (click)="selectCourse(course)">
 				<!--List of courses goes here-->
 				{{course}}
 			</li>

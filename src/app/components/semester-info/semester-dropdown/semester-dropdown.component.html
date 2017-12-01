@@ -3,19 +3,17 @@
       <div class="col-md-8">
         <div class="form-group">
           <label >Select your Term:</label>
-          <select class="form-control" id="ddSemesters">
-            <option  *ngFor="let semester of semesterList" value="{{semester.season}} {{semester.year}}" 
-            [class.selected]="semester === selectedSemester"
-            (click)="onSelectTerm(semester)">
-              {{semester.season}} {{semester.year}}
-            </option>
-          </select>
+            <select class="form-control" id="ddSemesters">
+              <option  *ngFor="let semester of semesterList" value="{{semester.season}} {{semester.year}}" 
+                (click)="onSelectTerm(semester)">
+                {{semester.season}} {{semester.year}}
+              </option>
+            </select>
           <div *ngIf="selectedSemester">
-            <p>{{selectedSemester}}<<- Deatails</p>
           </div>
-          <label>name:
-              <input [(ngModel)]="semester" placeholder="name" name="semester">
-          </label>
+          <!--label>name:
+              <input *ngFor="let semester of semesterList" [(ngModel)]="semester.year" placeholder="name" [ngModelOptions]="{standalone: true}">
+          </label-->
         </div>
       </div>
     </div>  
