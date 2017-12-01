@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseDataService } from '../../services/course-data.service';
-import { Course } from '../../classes/course';
-import { ApiRequestsService } from '../../services/api-requests.service';
-import { Semester } from '../../classes/semester';
+import { CourseDataService } from '../../../services/course-data.service';
+import { Course } from '../../../classes/course';
+import { ApiRequestsService } from '../../../services/api-requests.service';
+import { Semester } from '../../../classes/semester';
 
 @Component({
   selector: 'app-course-list',

@@ -1,20 +1,38 @@
-
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <div class="col-md-9">
-      <a class=" navbar-brand" href="#">
-        <img src="../../../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
-        StudyPath
-      </a>
-  
-    </div>
-  
-    <form class="input-group col-md-3 form-inline">
-      <input class="form-control" type="search" placeholder="Search for courses" aria-label="Search">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+    <img src="../../../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+    StudyPath
+  </a>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" 
+        routerLink="/scheduler">
+        <!--[routerLink]="['/scheduler', { outlets: {'timetable-gui': ['calendar'],'course-list-gui': ['course-list']}}]"-->
+          Schedule
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" 
+        routerLink="/semester-info">
+        <!--[routerLink]="['/semester-info', { outlets: {'sd': ['semester-dropdown'], 'sv': ['semester-view'], 'scv':['semester-course-view']}}]"-->
+        Semester Information
+        </a>
+      </li>
+      
+      
+    </ul>
+    <form class="input-group form-inline my-2 my-lg-0 col-md-3">
+      <input class="form-control" type="search" placeholder="Search for Courses.." aria-label="Search">
       <span class="input-group-btn">
-        <button class="btn btn-outline-success">
-          Search 
+        <button class="btn btn-outline-success" type="submit">
+          Search
         </button>
       </span>
     </form>
-    </nav>
-  
+  </div>
+</nav>
