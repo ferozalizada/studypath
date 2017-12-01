@@ -44,6 +44,8 @@ export class CourseListComponent implements OnInit {
     nick.addCourseToSemester("Fall2014",courseA);
     nick.addCourseToSemester("Fall2014",courseB);
     console.log(nick.getCoursesFromSemester("Fall2014")); // Returns an array of all courses for Fall 2014
+    nick.removeCourseFromSemester("Fall2014",courseB);
+    console.log(nick.getCoursesFromSemester("Fall2014"));
     
     
     
