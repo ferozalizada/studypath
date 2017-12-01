@@ -58,7 +58,7 @@ exports.getMatchingDocuments = function(collectionName, res, property, value){
 
 exports.getMatchingCourseItems = function(collectionName, res, property, value, item_type){
 	MongoClient.connect(url, function(err,db){
-            console.log('Checkpoint 4');
+            //console.log('Checkpoint 4');
             query = {};
             query[property] = value;
             query["type"] = item_type;

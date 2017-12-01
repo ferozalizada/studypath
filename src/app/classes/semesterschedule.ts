@@ -16,6 +16,7 @@ export class SemesterSchedule {
     
     removeCourse(course_id:number) {
         //..
+        console.log("This function has not been implemented!");
     }
     
     getCourses() {

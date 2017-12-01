@@ -22,7 +22,7 @@ export class Student {
         this.schedules[schedName] = new SemesterSchedule();
     }
     
-    addCourseToSemester (schedName:string, courseitems:CourseItem[]) {
+    addCourseToSemester (schedName:string, courseitems:StudentCourse[]) {
         this.schedules[schedName].addCourse(courseitems);
     }
     
