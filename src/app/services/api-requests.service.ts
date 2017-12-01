@@ -96,10 +96,13 @@ constructor(private http: HttpClient) {}
     });
   }
   
-  //  Returns array of all course items (LEC, LAB, DGD...) that belong to a certain section
-  getCourseItemsBySection(callback, section_id) {
+  //  Returns array of all course items that belong to a certain section, given a certain type (LEC, LAB, DGD...)
+  getCourseItemsBySection(callback, section_id:number, item_type:string) {
+    console.log('Checkpoint 2');
+    var params = new HttpParams().set('section_id',section_id.toString());
+    params.set('item_type',item_type)
     this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getCourseItemsBySection', {
-      params:new HttpParams().set('section_id',section_id.toString())
+      params
     }).subscribe(data => {
       callback(data.results);
     });
