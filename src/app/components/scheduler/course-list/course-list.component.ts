@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-s
 
 import { Course } from '../../../classes/course';
 import { Section } from '../../../classes/section';
