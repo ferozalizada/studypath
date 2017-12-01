@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+s
 
 import { Course } from '../../../classes/course';
 import { Section } from '../../../classes/section';
@@ -8,7 +9,6 @@ import { Semester } from '../../../classes/semester';
 
 import { CourseDataService } from '../../../services/course-data.service';
 
-
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -16,12 +16,15 @@ import { CourseDataService } from '../../../services/course-data.service';
 })
 export class CourseListComponent implements OnInit {
   courses:Course[];
+
   results:Section[];
   test:String;
+
 
   /*constructor(private courseDataService: CourseDataService) {
     this.courses = courseDataService.getAllCourses();
   }*/
+
   
   updateComponent(data) {
     this.results = data;
@@ -49,16 +52,19 @@ export class CourseListComponent implements OnInit {
     
     //this.apiRequestsService.addSemester();
     //apiRequestsService.getUsers();
+
     var semester = new Semester();
     semester.setSeason('Fall');
     semester.setYear(2017);
 
     //apiRequestsService.addSemester(semester);
+
     // apiRequestsService.getAllSemesters();
     //console.log(apiRequestsService.getAllSemesters());
     //console.log(this.results);
     //this.test = apiRequestsService.results;
     //console.log(apiRequestsService.results);
+
   }
 
   ngOnInit() {

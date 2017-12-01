@@ -1,9 +1,5 @@
 <ul class="list-group col-11">
     <li class="list-group-item">List of courses available</li>
     <li *ngFor="let course of courses" class="list-group-item">
-        {{course.getFullCode()}}<br />
-        {{course.getType()}}<br />
-        {{course.getDay()}} {{course.getHours()}}<br />
-        {{course.getLocation()}}
     </li>
 </ul>
