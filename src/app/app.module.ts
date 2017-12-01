@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -47,6 +48,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SemesterInfoComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
