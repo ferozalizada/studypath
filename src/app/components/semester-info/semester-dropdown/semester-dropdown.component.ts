@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SemesterListService } from '../../services/semester-list.service';
-import { Semester } from '../../classes/semester';
+import { SemesterListService } from '../../../services/semester-list.service';
+import { Semester } from '../../../classes/semester';
 import { FormsModule } from '@angular/forms';
 
 @Component({
