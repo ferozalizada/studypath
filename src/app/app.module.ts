@@ -9,8 +9,15 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+//import { AppComponent } from './app.component';
+//import { CalendarComponent } from './components/calendar/calendar.component';
+//import { CourseListComponent } from './components/course-list/course-list.component';
+//import { CourseDataService } from './services/course-data.service';
+//import { SemesterDropdownComponent } from './components/semester-dropdown/semester-dropdown.component';
+
 //Imports all the required services
 import { CourseDataService } from './services/course-data.service';
+
 import { SemesterListService } from './services/semester-list.service';
 import { ApiRequestsService } from './services/api-requests.service';
 

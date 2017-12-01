@@ -1,3 +1,6 @@
+/// I dont think we need this class at all
+// Semesters don't really have unique properties that need to be stored
+
 export class Semester {
     private season:string;
     private year:number;

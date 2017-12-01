@@ -1,62 +1,43 @@
 export class Course {
+    private id:number;
+    private name:string; //example: Data Structures and Algorithms
     private code:string; //example: CSI2110
-    private section:string; //example: B00
-    private type:string;
-    private day:string;
-    private startHour:string;
-    private endHour:string;
-    private location:string;
+    private description:string; //
 
     constructor(){ 
         //...
+    }
+    
+    setId (id:number) {
+        this.id = id;
     }
 
     setCode(code:string){
         this.code = code;
     }
-
-    setSection(section:string){
-        this.section = section;
+    
+    setName(name:string) {
+        this.name = name;
     }
-
-    setType(type:string){
-        this.type = type;
+    
+    setDescription(desc:string) {
+        this.description = desc;
     }
-
-    setDay(day:string){
-        this.day = day;
+    
+    getId() {
+        return this.id;
     }
-
-    setStartHour(startHour:string){
-        this.startHour = startHour;
+    
+    getName() {
+        return this.name;
     }
-
-    setEndHour(endHour:string){
-        this.endHour = endHour;
+    
+    getCode() {
+        return this.code;
     }
-
-    setLocation(location:string){
-        this.location = location;
-    }
-
-    getFullCode(){
-        return this.code + " - " + this.section;
-    }
-
-    getType(){
-        return this.type;
-    }
-
-    getDay(){
-        return this.day;
-    }
-
-    getHours(){
-        return this.startHour + " - " + this.endHour;
-    }
-
-    getLocation(){
-        return this.location;
+    
+    getDescription() {
+        return this.description;
     }
     
 }
