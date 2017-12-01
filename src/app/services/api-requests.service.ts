@@ -100,7 +100,7 @@ constructor(private http: HttpClient) {}
   getCourseItemsBySection(callback, section_id:number, item_type:string) {
     console.log('Checkpoint 2');
     var params = new HttpParams().set('section_id',section_id.toString());
-    params.set('item_type',item_type)
+    params = params.append('item_type',item_type);
     this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getCourseItemsBySection', {
       params
     }).subscribe(data => {

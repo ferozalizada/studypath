@@ -46,20 +46,20 @@ export class CourseListComponent implements OnInit {
     console.log(nick.getCoursesFromSemester("Fall2014"));
     nick.removeCourseFromSemester("Fall2014",12);
     console.log(nick.getCoursesFromSemester("Fall2014"));
-    */
+    
     
     let nick = new Student(7,"Nick","Molinari");
     nick.addSemester("Fall2014");
     let newCourse = new StudentCourse('Math','MAT1312','B',[5,6]);
     nick.addCourseToSemester("Fall2014",newCourse);
     console.log(nick.getCoursesFromSemester("Fall2014"));
-    
+    */
     
     //this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
     
     //console.log("Checkpoint 1");
     
-    //this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),1,"LAB");
+    this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),1,"LAB");
     
     /*
     this.apiRequestsService.getAllStudents(this.updateComponent.bind(this));
@@ -70,6 +70,7 @@ export class CourseListComponent implements OnInit {
     
     this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),0,"LEC");
     */
+    
     
     //this.apiRequestsService.getStudentById(this.updateComponent.bind(this),10);
     
