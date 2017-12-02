@@ -19,12 +19,25 @@
 
         <td *ngFor="let day of days; let j=index"> 
             <span *ngFor="let item of items">
-                <span *ngIf="item.getDay()===day">
+                <span *ngIf="item.getDay()===day && (item.getStartHour() <= hour && item.getEndHour() >= hour)">
                     Test
                   </span>
             </span>
         </td>
       </tr>
+        
+
+      <!-- <tr *ngFor=" let hour of hours; let i = index">
+        <th scope="row" >{{hour}}</th>
+
+        <td *ngFor="let day of days; let j=index"> 
+            <span *ngFor="let item of items">
+                <span *ngIf="item.getDay()===day">
+                    Test
+                  </span>
+            </span>
+        </td>
+      </tr> -->
     </tbody>
   </table>
 
