@@ -74,6 +74,14 @@ export class CourseItem {
         return this.startHour + " - " + this.endHour;
     }
 
+    getStartHour() {
+        return this.startHour;
+    }
+
+    getEndHour() {
+        return this.endHour;
+    }
+
     getLocation(){
         return this.location;
     }

@@ -11,8 +11,8 @@ export class SemesterCourseViewComponent implements OnInit {
   courseList : Course[];
 
   constructor( private courseDataService: CourseDataService) { 
-    courseDataService.initCoursesArray();
-    this.courseList = courseDataService.getAllCourses();
+    //courseDataService.initCoursesArray();
+    //this.courseList = courseDataService.getAllCourses();
   }
 
   ngOnInit() {

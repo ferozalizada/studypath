@@ -30,8 +30,10 @@ export class CourseListComponent implements OnInit {
 
   results:Object[]; //This is just for debugging
 
-  isEmpty(obj) {
-    return Object.keys(obj).length === 0;
+   // Function for printing the result of an api query
+   updateComponent(data) {
+    this.results = data;
+    console.log(this.results);
   }
 
   // Creates a StudentCourse object to add to SemesterSchedule
@@ -42,16 +44,11 @@ export class CourseListComponent implements OnInit {
         courseItemsToAdd.push(item);
       }
     }
-    let newCourse = new StudentCourse(name,code,section,courseItemsToAdd);
+    let newCourse = new StudentCourse(name,code,section,type,courseItemsToAdd);
     console.log(newCourse);
+    this.courseDataService.addCourse(newCourse);
   }
 
-  // Function for printing the result of an api query
-  updateComponent(data) {
-    this.results = data;
-    console.log(this.results);
-  }
-s
   // Loads the sections for a selected course
   updateSections(data:Section[]) {
     this.sections = data.map(item => new Section(item));

@@ -1,13 +1,17 @@
+import { CourseItem } from './courseitem';
+
 export class StudentCourse {
     private name:string;
     private code:string;
     private section:string;
-    private course_item_ids:number[];
+    private type:string;
+    private course_item_ids:CourseItem[];
     
-    constructor(name:string, code:string, section:string, courseItemIds:number[]) {
+    constructor(name:string, code:string, section:string, type:string, courseItemIds:CourseItem[]) {
         this.name = name;
         this.section = section;
         this.code = code;
+        this.type = type;
         this.course_item_ids = courseItemIds;
     }
     
@@ -25,6 +29,10 @@ export class StudentCourse {
     
     getFullCode() {
         return this.code + this.section;
+    }
+
+    getType() {
+        return this.type;
     }
     
     getCourseItemIds() {
