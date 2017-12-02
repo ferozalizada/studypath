@@ -14,8 +14,11 @@ export class SemesterSchedule {
         this.courses.push(course);
     }
     
-    removeCourse(course_id:number) {
-        //..
+    removeCourse(course:StudentCourse) {
+        let idx = this.courses.indexOf(course);
+        if (idx != -1) {
+            this.courses.splice(idx,1);
+        }
     }
     
     getCourses() {

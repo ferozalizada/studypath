@@ -19,8 +19,7 @@ var allowedUrl = [
     '/api/addStudent',
     '/api/addCourse',
     '/api/addSection',
-    '/api/addCourseItem',
-    '/api/getNumberOfStudents'
+    '/api/addCourseItem'
 ];  
 
 //bodyParser used so we can read post variables sent in body
