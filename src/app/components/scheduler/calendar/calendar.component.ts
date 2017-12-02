@@ -36,6 +36,8 @@ export class CalendarComponent implements OnInit {
     this.daysNumber = [];
     this.calendarMap = {};
     this.numbers = [1,2,3,4,5];
+    this.courses = [];
+    this.courseDataService.initCourses(this);
     this.getCourses();
   }
 

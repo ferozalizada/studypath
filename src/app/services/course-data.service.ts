@@ -3,6 +3,7 @@ import { Course } from '../classes/course';
 import { ApiRequestsService } from './api-requests.service';
 import { Student } from '../classes/student';
 import { StudentCourse } from '../classes/studentcourse';
+import { CalendarItem } from '../classes/CalendarItem';
 
 /*
 This class basically keeps track of your semester schedule as you create it, and coordinates
@@ -16,9 +17,14 @@ But when we do implement it, this class is where we will do it from
 @Injectable()
 export class CourseDataService {
   private courses:StudentCourse[];
+  private context;
   
   constructor (private api: ApiRequestsService) {
     this.courses=[];
+  }
+
+  initCourses(context){
+    this.context = context;
   }
 
   getCourses() {
@@ -44,7 +50,34 @@ export class CourseDataService {
     if (flagged) this.removeCourse(flagged);
 
     this.courses.push(course);
+    this.createItemsFromCourses();
     console.log(this.courses);
+  }
+
+  createItemsFromCourses(){
+    let items:CalendarItem[];
+    items = [];
+
+    for (let course of this.courses) {
+      for (let item of course.getCourseItemIds()) { 
+
+        let newItem = new CalendarItem(
+          course.getName(),
+          course.getCode(),
+          course.getType(),
+          course.getSection(),
+          item.getStartHour(),
+          item.getEndHour(),
+          item.getDay(),
+          item.getInstructor(),
+          item.getLocation()
+        );
+        
+        items.push(newItem);
+      }
+    }
+
+    this.context.items = items;
   }
  
  
