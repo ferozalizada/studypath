@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'scheduler',
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
     component: SchedulerComponent,
     children: [
       {

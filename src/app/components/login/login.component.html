@@ -1,12 +1,69 @@
 <div class="offset-4 col-4" id="loginBox">
-  <form class="form-group" (submit)="userLogin($event)">
+  <form class="form-group">
     
     <label for="studentID" id="lblStudentID">Student ID</label>
-    <input type="text" id="studentID" class="form-control" />
+    <input type="text" #studentID class="form-control" />    
+    <button id="btnLogin" class="btn btn-primary col-12" type="submit"
+    (click)="login(studentID.value)">Login</button>
+   
+     <a class="center-block">Register</a>
+    <button class="btn btn-primary col-12 " data-toggle="modal" data-target="#exampleModal">
+      Register  
+    </button>
 
-    <label for="studentPass" id="lblStudentPass">Password</label>
-    <input type="password" id="studentPass" class="form-control" />
-    
-    <button id="btnLogin" class="btn btn-primary col-12" type="submit">Login</button>
   </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+
+       
+        <form class="row" (submit)="registerUser($event)">
+          <div class="form-group col-12">
+            <label for="studentID" class="control-label">Student ID</label>
+            <div >
+                <input type="text" class="form-control" id="studentID" placeholder="Student ID" />
+            </div>  
+            
+            <label for="firstName" class="control-label">First Name</label>
+            <div >
+                <input type="text" class="form-control" id="firstName" placeholder="Fiest Name" />
+            </div>  
+
+            <label for="lastName" class="control-label">Last Name</label>
+            <div >
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+            </div> 
+
+            <label for="startYear" class="control-label">Start Year</label>
+            <div>
+                <input type="number" min="2010" max="2099" class="form-control" id="startYear" placeholder="Year" />
+            </div> 
+
+          </div>
+          <div class="modal-footer">
+
+          </div>
+    
+          <div class="col-12">
+            <div class="d-inline-block float-right">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Register</button>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

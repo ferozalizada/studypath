@@ -37,6 +37,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserAuthenticationService } from './services/user-authentication.service';
 import { AuthGuard } from './authentication-guard/auth.guard';
+import { RegisterationFormComponent } from './registeration-form/registeration-form.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AuthGuard } from './authentication-guard/auth.guard';
     NavbarComponent,
     SchedulerComponent,
     SemesterInfoComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterationFormComponent
   ],
   imports: [
     FormsModule,
