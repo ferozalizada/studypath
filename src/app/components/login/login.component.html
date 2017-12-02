@@ -1,7 +1,12 @@
 <div class="offset-4 col-4" id="loginBox">
-  <div class="form-group">
+  <form class="form-group" (submit)="userLogin($event)">
+    
     <label for="studentID" id="lblStudentID">Student ID</label>
     <input type="text" id="studentID" class="form-control" />
-  </div>
-  <button id="btnLogin" class="btn btn-primary col-12">Login</button>
+
+    <label for="studentPass" id="lblStudentPass">Password</label>
+    <input type="password" id="studentPass" class="form-control" />
+    
+    <button id="btnLogin" class="btn btn-primary col-12" type="submit">Login</button>
+  </form>
 </div>
