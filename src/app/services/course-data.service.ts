@@ -3,7 +3,7 @@ import { Course } from '../classes/course';
 import { ApiRequestsService } from './api-requests.service';
 import { Student } from '../classes/student';
 import { StudentCourse } from '../classes/studentcourse';
-import { CalendarItem } from '../classes/CalendarItem';
+import { CalendarItem } from '../classes/calendaritem';
 
 /*
 This class basically keeps track of your semester schedule as you create it, and coordinates
