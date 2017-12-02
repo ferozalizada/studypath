@@ -1,5 +1,37 @@
-<ul class="list-group col-11">
-    <li class="list-group-item">List of courses available</li>
-    <li *ngFor="let course of courses" class="list-group-item">
-    </li>
+	<ul class="list-group">
+	<form class="input-group form-inline ">
+		<input class="form-control" type="search" placeholder="Search for Courses.." aria-label="Search">
+		<span class="input-group-btn">
+			<button class="btn btn-outline-success btn-sm glyphicon glyphicon-search">
+					<img src="https://png.icons8.com/search" width="20px" height="20px"> 
+			</button>
+		</span>
+	</form>
+	<li class="list-group-item">List of courses available</li>
+	<li class="btn" class="list-group-item" data-toggle="collapse" 
+	href="#addtitional-info" *ngFor="let course of courses" 
+	(click)="selectCourse(course)">
+		{{course.getCode()}} - {{course.getName()}}
+		<div class="card" *ngIf="course === selectedObj" class="collapse " id="addtitional-info">
+			<ul class="list-group list-group-flush">
+				<!--<li class="list-group-item">{{selectedObj.getName()}}</li>-->
+				<span *ngIf="sections.length > 0">
+					Lectures:
+					<li *ngFor="let section of sections">
+						{{section.getName()}}
+					</li>
+				</span>
+				<!--
+				<span *ngIf="labs.length">
+					Labs:
+					<li *ngFor="let lab of labs">
+						{{lab.getName()}}
+					</li>
+				</span>-->
+
+				
+			</ul>
+		</div>
+	</li>
 </ul>
+

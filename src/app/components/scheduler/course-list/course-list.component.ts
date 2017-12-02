@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Course } from '../../../classes/course';
+import { CourseItem } from '../../../classes/courseitem';
 import { Section } from '../../../classes/section';
 import { Student } from '../../../classes/student';
 import { ApiRequestsService } from '../../../services/api-requests.service';
@@ -9,6 +10,7 @@ import { Semester } from '../../../classes/semester';
 import { StudentCourse } from '../../../classes/studentcourse';
 
 import { CourseDataService } from '../../../services/course-data.service';
+import { constructDependencies } from '@angular/core/src/di/reflective_provider';
 
 @Component({
   selector: 'app-course-list',
@@ -17,9 +19,16 @@ import { CourseDataService } from '../../../services/course-data.service';
 })
 export class CourseListComponent implements OnInit {
   courses:Course[];
+  sections:Section[];
+
+  lectures:{};
+  labs:{};
+  dgds:{};
 
   results:Section[];
   test:String;
+  selectedObj: Course;
+  
 
 
   /*constructor(private courseDataService: CourseDataService) {
@@ -34,8 +43,31 @@ export class CourseListComponent implements OnInit {
        your database has no results for the given query */
   }
 
-  constructor(private apiRequestsService: ApiRequestsService) {
-    
+  updateSections(data:Section[]) {
+    //This stuff is required
+    let sectionsArr = data;
+    this.sections = sectionsArr.map(item => new Section(item));
+    //This for loop is also broken as hell
+    for (let sec of this.sections) {
+        this.apiRequestsService.getCourseItemsBySection(this.updateSectionLectures.bind(this),sec.getId(),'LEC');
+    }
+  }
+
+  //Fucking broken as hell function
+  updateSectionLectures(data:CourseItem[]) {
+    if (data.length > 0) {
+      let lecArr = data;
+      let lecturesMapped = lecArr.map(item => new CourseItem(item));
+      this.lectures[lecturesMapped[0].getSectionId()] = lecturesMapped;
+    }
+  }
+
+
+
+  constructor(private apiRequestsService: ApiRequestsService
+    ,private courseDataService: CourseDataService
+  ) {
+    this.courses = courseDataService.getAllCourses();
     // Example of usage of semester class within student
     
     /*
@@ -88,10 +120,20 @@ export class CourseListComponent implements OnInit {
     //console.log(this.results);
     //this.test = apiRequestsService.results;
     //console.log(apiRequestsService.results);
+    this.sections = [];
+    this.lectures = {};
 
   }
+
+  //this.sections = [];
+
 
   ngOnInit() {
   }
-
+  selectCourse(course: Course):void{
+    this.selectedObj = course;
+    console.log("Selected Obj's code is: " + this.selectedObj.getCode());
+    this.apiRequestsService.getSectionsByCourse(this.updateSections.bind(this),this.selectedObj.getId());
+    
+  }
 }

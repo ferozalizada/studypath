@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -33,6 +34,7 @@ import { SemesterViewComponent } from './components/semester-info/semester-view/
 import { SemesterCourseViewComponent } from './components/semester-info/semester-course-view/semester-course-view.component';
 import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SemesterCourseViewComponent,
     NavbarComponent,
     SchedulerComponent,
-    SemesterInfoComponent
+    SemesterInfoComponent,
+    LoginComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

@@ -1,14 +1,24 @@
-<table class="col-12 offset-md-1">
-  <tr class="row">
-    <td class="col-1">{{hourName}}</td>
-    <td class="col-2" *ngFor="let day of days; let i = index;">{{day}}<br />{{daysNumber[i]}} {{month}}</td>
-  </tr>
-  <tr class="row" *ngFor="let hour of hours;">
-    <td class="col-1">{{hour}}</td>
-    <td class="col-2"></td>
-    <td class="col-2"></td>
-    <td class="col-2"></td>
-    <td class="col-2"></td>
-    <td class="col-2"></td>
-  </tr>
-</table>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Time</th>
+        <th scope="col" *ngFor="let day of days; let i = index">
+          {{day}} <br>
+          {{daysNumber[i]}}
+          {{month}}
+
+        </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let hour of hours">
+        <th scope="row" >{{hour}}</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
