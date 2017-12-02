@@ -7,6 +7,7 @@ export class StudentCourse {
     constructor(name:string, code:string, section:string, courseItemIds:number[]) {
         this.name = name;
         this.section = section;
+        this.code = code;
         this.course_item_ids = courseItemIds;
     }
     

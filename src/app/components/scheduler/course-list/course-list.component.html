@@ -8,29 +8,104 @@
 		</span>
 	</form>
 	<li class="list-group-item">List of courses available</li>
-	<li class="btn" class="list-group-item" data-toggle="collapse" 
-	href="#addtitional-info" *ngFor="let course of courses" 
-	(click)="selectCourse(course)">
-		{{course.getCode()}} - {{course.getName()}}
-		<div class="card" *ngIf="course === selectedObj" class="collapse " id="addtitional-info">
-			<ul class="list-group list-group-flush">
-				<!--<li class="list-group-item">{{selectedObj.getName()}}</li>-->
-				<span *ngIf="sections.length > 0">
-					Lectures:
-					<li *ngFor="let section of sections">
-						{{section.getName()}}
-					</li>
-				</span>
-				<!--
-				<span *ngIf="labs.length">
-					Labs:
-					<li *ngFor="let lab of labs">
-						{{lab.getName()}}
-					</li>
-				</span>-->
+	<li  
+	 *ngFor="let course of courses"
+	class="list-group-item">
 
-				
-			</ul>
+		<a class="btn" (click)="selectCourse(course)" data-toggle="collapse" href="#addtitional-info">
+			<u>{{course.getCode()}} - {{course.getName()}}</u>
+		</a>
+	
+		<div class="card" *ngIf="course === selectedObj" class="collapse" id="addtitional-info">
+	
+				<!-- LECTURES -->				
+				<span *ngIf="hasLecs['total']">
+					<b>
+						Lectures
+					</b>
+					<span *ngFor="let section of sections">
+						<span *ngIf="hasLecs[section.getId()]">
+							<div>
+								<input type='radio' name='lecture' 
+								(click)="selectItem(course.getName(),course.getCode(),section.getName(),'LEC',section.getId())">
+								Section {{section.getName()}}:
+								<span *ngFor="let courseitem of courseitems[section.getId()]">
+									<span *ngIf="courseitem.type==='LEC'">
+										<br>
+										{{courseitem.getDay()}}: {{courseitem.getHours()}}
+									</span>
+								</span>
+							</div>
+						</span>
+					</span>
+				</span>
+
+				<!-- LABS -->				
+				<span *ngIf="hasLabs['total']">
+					<b>
+						Labs
+					</b>
+					<span *ngFor="let section of sections">
+						<span *ngIf="hasLabs[section.getId()]">
+							<div>
+								<input type='radio' name='labs' 
+								(click)="selectItem(course.getName(),course.getCode(),section.getName(),'LAB',section.getId())">
+								Section {{section.getName()}}:
+								<span *ngFor="let courseitem of courseitems[section.getId()]">
+									<span *ngIf="courseitem.type==='LAB'">
+										<br>
+										{{courseitem.getDay()}}: {{courseitem.getHours()}}
+									</span>
+								</span>
+							</div>
+						</span>
+					</span>
+				</span>
+
+				<!-- DGDS -->				
+				<span *ngIf="hasDgds['total']">
+					<b>
+						Discussion Groups
+					</b>
+					<span *ngFor="let section of sections">
+						<span *ngIf="hasDgds[section.getId()]">
+							<div>
+								<input type='radio' name='dgds' 
+								(click)="selectItem(course.getName(),course.getCode(),section.getName(),'DGD',section.getId())">
+								Section {{section.getName()}}:
+								<span *ngFor="let courseitem of courseitems[section.getId()]">
+									<span *ngIf="courseitem.type==='DGD'">
+										<br>
+										{{courseitem.getDay()}}: {{courseitem.getHours()}}
+									</span>
+								</span>
+							</div>
+						</span>
+					</span>
+				</span>
+
+				<!-- Tutorials -->				
+				<span *ngIf="hasTuts['total']">
+					<b>
+						Tutorials
+					</b>
+					<span *ngFor="let section of sections">
+						<span *ngIf="hasTuts[section.getId()]">
+							<div>
+								<input type='radio' name='tuts' 
+								(click)="selectItem(course.getName(),course.getCode(),section.getName(),'TUT',section.getId())">
+								Section {{section.getName()}}:
+								<span *ngFor="let courseitem of courseitems[section.getId()]">
+									<span *ngIf="courseitem.type==='TUT'">
+										<br>
+										{{courseitem.getDay()}}: {{courseitem.getHours()}}
+									</span>
+								</span>
+							</div>
+						</span>
+					</span>
+				</span>
+			
 		</div>
 	</li>
 </ul>

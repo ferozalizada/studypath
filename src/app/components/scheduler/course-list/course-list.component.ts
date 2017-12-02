@@ -20,48 +20,71 @@ import { constructDependencies } from '@angular/core/src/di/reflective_provider'
 export class CourseListComponent implements OnInit {
   courses:Course[];
   sections:Section[];
-
-  lectures:{};
-  labs:{};
-  dgds:{};
-
-  results:Section[];
-  test:String;
+  courseitems:{};
+  hasLecs:{};
+  hasLabs:{};
+  hasDgds:{};
+  hasTuts:{};
   selectedObj: Course;
   
 
+  results:Object[]; //This is just for debugging
 
-  /*constructor(private courseDataService: CourseDataService) {
-    this.courses = courseDataService.getAllCourses();
-  }*/
+  isEmpty(obj) {
+    return Object.keys(obj).length === 0;
+  }
 
-  
+  // Creates a StudentCourse object to add to SemesterSchedule
+  selectItem(name:string,code:string,section:string, type:string,section_id:number) {
+    let courseItemsToAdd = [];
+    for (let item of this.courseitems[section_id]) {
+      if (item.type === type) {
+        courseItemsToAdd.push(item);
+      }
+    }
+    let newCourse = new StudentCourse(name,code,section,courseItemsToAdd);
+    console.log(newCourse);
+  }
+
+  // Function for printing the result of an api query
   updateComponent(data) {
     this.results = data;
     console.log(this.results);
-    /* If console logs 'undefined' or an empty array its just because
-       your database has no results for the given query */
   }
-
+s
+  // Loads the sections for a selected course
   updateSections(data:Section[]) {
-    //This stuff is required
-    let sectionsArr = data;
-    this.sections = sectionsArr.map(item => new Section(item));
-    //This for loop is also broken as hell
+    this.sections = data.map(item => new Section(item));
+    // Find CourseItems for each section
     for (let sec of this.sections) {
-        this.apiRequestsService.getCourseItemsBySection(this.updateSectionLectures.bind(this),sec.getId(),'LEC');
+      this.apiRequestsService.getAllCourseItemsBySection(this.updateCourseItems.bind(this),sec.getId());
     }
   }
 
-  //Fucking broken as hell function
-  updateSectionLectures(data:CourseItem[]) {
-    if (data.length > 0) {
-      let lecArr = data;
-      let lecturesMapped = lecArr.map(item => new CourseItem(item));
-      this.lectures[lecturesMapped[0].getSectionId()] = lecturesMapped;
+  // Loads all course items for a section
+  updateCourseItems(data:CourseItem[]) {
+    var newdata = data.map(item=>new CourseItem(item));
+    if (newdata.length > 0 ) {
+      this.courseitems[newdata[0].getSectionId()] = newdata;
+      for (var item of newdata) {
+        if (item.getType() === 'LEC') {
+          this.hasLecs[item.getSectionId()] = true;
+          this.hasLecs['total'] = true;
+        } else if (item.getType() === 'LAB') {
+          this.hasLabs[item.getSectionId()] = true;
+          this.hasLabs['total'] = true;
+        } else if (item.getType() === 'DGD') {
+          this.hasDgds[item.getSectionId()] = true;
+          this.hasDgds['total'] = true;
+        } else if (item.getType() === 'TUT') {
+          this.hasTuts[item.getSectionId()] = true;
+          this.hasTuts['total'] = true;
+        }
+      }
     }
   }
 
+  // Callback for initial populating of course list from database
   addCoursesToArray(courses){
     this.courses = courses.map(item => new Course(item));
   }
@@ -70,71 +93,23 @@ export class CourseListComponent implements OnInit {
     ,private courseDataService: CourseDataService
   ) {
 
-    //courseDataService.initCoursesArray();
+    // Populate courselist from databaase
     this.apiRequestsService.getAllCourses(this.addCoursesToArray.bind(this));
 
-    // Example of usage of semester class within student
-    let nick = new Student(7,"Nick","Molinari");
-    nick.addSemester("Fall2014");
-    let courseA = new StudentCourse('Math','MAT1312','B',[5,6]);
-    let courseB = new StudentCourse('Software Eng','SEG2105','A',[1,2]);
-    nick.addCourseToSemester("Fall2014",courseA);
-    nick.addCourseToSemester("Fall2014",courseB);
-    console.log(nick.getCoursesFromSemester("Fall2014")); // Returns an array of all courses for Fall 2014
-    nick.removeCourseFromSemester("Fall2014",courseB);
-    console.log(nick.getCoursesFromSemester("Fall2014"));
-    
-    
-    
-    
-    
-    this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
-    
-    //console.log("Checkpoint 1");
-    
-    //this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),1,"LAB");
-    
-    /*
-    this.apiRequestsService.getAllStudents(this.updateComponent.bind(this));
-    this.apiRequestsService.getAllCourses(this.updateComponent.bind(this));
-    this.apiRequestsService.getAllSections(this.updateComponent.bind(this));
-    this.apiRequestsService.getAllCourseItems(this.updateComponent.bind(this));
-    
-    
-    this.apiRequestsService.getCourseItemsBySection(this.updateComponent.bind(this),0,"LEC");
-    */
-    
-    
-    //this.apiRequestsService.getStudentById(this.updateComponent.bind(this),10);
-    
-    //this.apiRequestsService.addSemester();
-    //apiRequestsService.getUsers();
-
-    var semester = new Semester();
-    semester.setSeason('Fall');
-    semester.setYear(2017);
-
-    //apiRequestsService.addSemester(semester);
-
-    // apiRequestsService.getAllSemesters();
-    //console.log(apiRequestsService.getAllSemesters());
-    //console.log(this.results);
-    //this.test = apiRequestsService.results;
-    //console.log(apiRequestsService.results);
     this.sections = [];
-    this.lectures = {};
-
   }
-
-  //this.sections = [];
 
 
   ngOnInit() {
   }
   selectCourse(course: Course):void{
     this.selectedObj = course;
-    console.log("Selected Obj's code is: " + this.selectedObj.getCode());
-
+    this.sections = [];
+    this.courseitems = {};
+    this.hasLecs = {};
+    this.hasLabs = {};
+    this.hasDgds = {};
+    this.hasTuts = {};
     this.apiRequestsService.getSectionsByCourse(this.updateSections.bind(this),this.selectedObj.getId());
 
   }

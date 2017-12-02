@@ -107,6 +107,17 @@ constructor(private http: HttpClient) {}
     });
   }
 
+  //  Returns array of all course items that belong to a certain section, given a certain type (LEC, LAB, DGD...)
+  getAllCourseItemsBySection(callback, section_id:number) {
+    var params = new HttpParams().set('section_id',section_id.toString());
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getAllCourseItemsBySection', {
+      params
+    }).subscribe(data => {
+      callback(data.results);
+    });
+  }
+
+
   // Returns array of all courses whose code contains specific sequecne (for searching)
   getCoursesBySearch(callback, searchTerm:string) {
     var params = new HttpParams().set('search_term',searchTerm);

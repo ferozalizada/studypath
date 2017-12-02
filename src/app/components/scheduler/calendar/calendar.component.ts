@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SemesterSchedule } from '../../../classes/semesterschedule'
+import { Student } from '../../../classes/student';
 
 @Component({
   selector: 'app-calendar',
@@ -12,10 +14,15 @@ export class CalendarComponent implements OnInit {
   hourName:string;
   hours:string[];
   userLang:number;
+  student:Student;
 
   constructor() { 
     this.userLang = 1;
     this.daysNumber = [];
+
+    this.student = new Student(7,'Nick','Molinari');
+    this.student.addSemester("Fall2017");
+    
   }
 
   ngOnInit() {
