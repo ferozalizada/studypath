@@ -1,3 +1,9 @@
+/*
+~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~
+Note: example of class functionality can be found in
+course-list.component.ts
+*/
+
 import { StudentCourse } from './studentcourse';
 import { SemesterSchedule } from './semesterschedule';
 import { CourseItem } from './courseitem';
@@ -22,12 +28,12 @@ export class Student {
         this.schedules[schedName] = new SemesterSchedule();
     }
     
-    addCourseToSemester (schedName:string, courseitems:CourseItem[]) {
+    addCourseToSemester (schedName:string, courseitems:StudentCourse) {
         this.schedules[schedName].addCourse(courseitems);
     }
     
-    removeCourseFromSemester (schedName:string, course_id:number) {
-        this.schedules[schedName].removeCourse(course_id);
+    removeCourseFromSemester (schedName:string, course:StudentCourse) {
+        this.schedules[schedName].removeCourse(course);
     }
     
     getCoursesFromSemester (schedName:string) {
