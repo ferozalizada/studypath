@@ -34,6 +34,7 @@ import { SemesterViewComponent } from './components/semester-info/semester-view/
 import { SemesterCourseViewComponent } from './components/semester-info/semester-course-view/semester-course-view.component';
 import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SemesterCourseViewComponent,
     NavbarComponent,
     SchedulerComponent,
-    SemesterInfoComponent
+    SemesterInfoComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
