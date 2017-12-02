@@ -62,8 +62,6 @@ export class CourseListComponent implements OnInit {
     }
   }
 
-
-
   constructor(private apiRequestsService: ApiRequestsService
     ,private courseDataService: CourseDataService
   ) {
@@ -129,7 +127,8 @@ export class CourseListComponent implements OnInit {
   selectCourse(course: Course):void{
     this.selectedObj = course;
     console.log("Selected Obj's code is: " + this.selectedObj.getCode());
+
     this.apiRequestsService.getSectionsByCourse(this.updateSections.bind(this),this.selectedObj.getId());
-    
+
   }
 }
