@@ -62,10 +62,17 @@ export class CourseListComponent implements OnInit {
     }
   }
 
+  addCoursesToArray(courses){
+    this.courses = courses.map(item => new Course(item));
+  }
+
   constructor(private apiRequestsService: ApiRequestsService
     ,private courseDataService: CourseDataService
   ) {
-    this.courses = courseDataService.getAllCourses();
+
+    //courseDataService.initCoursesArray();
+    this.apiRequestsService.getAllCourses(this.addCoursesToArray.bind(this));
+
     // Example of usage of semester class within student
     let nick = new Student(7,"Nick","Molinari");
     nick.addSemester("Fall2014");
@@ -81,7 +88,7 @@ export class CourseListComponent implements OnInit {
     
     
     
-    //this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
+    this.apiRequestsService.getSectionsByCourse(this.updateComponent.bind(this),1);
     
     //console.log("Checkpoint 1");
     

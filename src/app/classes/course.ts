@@ -4,8 +4,11 @@ export class Course {
     private code:string; //example: CSI2110
     private description:string; //
 
-    constructor(){ 
-        //...
+    constructor(obj:Course){ 
+        this.id = obj.id;
+        this.name = obj.name;
+        this.code = obj.code;
+        this.description = obj.description;
     }
     
     setId (id:number) {

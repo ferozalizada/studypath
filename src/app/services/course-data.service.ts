@@ -20,7 +20,7 @@ export class CourseDataService {
 
   addCoursesToArray(courses){
     this.courses = courses;
-    console.log(this.courses);
+    console.log("Courses:" + this.courses);
   }
 
   getAllCourses(){

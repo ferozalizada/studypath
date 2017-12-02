@@ -55,6 +55,7 @@ app.get('/api/getAllStudents',function(req, res){
 });
 
 app.get('/api/getAllCourses', function(req, res){
+    console.log("Checkpoint");
 	api.getAllDocuments('courses',res); 
 });
 
