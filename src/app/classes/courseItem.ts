@@ -9,15 +9,17 @@ export class CourseItem {
     private instructor:string;
     private location:string;
     
-    constructor(obj:CourseItem){
-        this.id = obj.id;
-        this.section_id = obj.id;
-        this.day = obj.day;
-        this.startHour = obj.startHour;
-        this.endHour = obj.endHour;
-        this.type = obj.type;
-        this.instructor = obj.instructor;
-        this.location = obj.location;
+    constructor(obj?:CourseItem){
+        if (obj) {
+            this.id = obj.id;
+            this.section_id = obj.section_id;
+            this.day = obj.day;
+            this.startHour = obj.startHour;
+            this.endHour = obj.endHour;
+            this.type = obj.type;
+            this.instructor = obj.instructor;
+            this.location = obj.location;
+        }
     }
     
     setId (id:number) {
@@ -70,6 +72,14 @@ export class CourseItem {
 
     getHours(){
         return this.startHour + " - " + this.endHour;
+    }
+
+    getStartHour() {
+        return this.startHour;
+    }
+
+    getEndHour() {
+        return this.endHour;
     }
 
     getLocation(){

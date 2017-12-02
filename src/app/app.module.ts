@@ -36,6 +36,9 @@ import { SemesterDropdownComponent } from './components/semester-info/semester-d
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,

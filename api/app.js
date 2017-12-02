@@ -19,7 +19,8 @@ var allowedUrl = [
     '/api/addStudent',
     '/api/addCourse',
     '/api/addSection',
-    '/api/addCourseItem'
+    '/api/addCourseItem',
+    '/api/getAllCourseItemsBySection'
 ];  
 
 //bodyParser used so we can read post variables sent in body
@@ -93,6 +94,11 @@ app.get('/api/getSectionsByCourse', function(req,res) {
 // Get all course items belonging to a specific section
 app.get('/api/getCourseItemsBySection', function(req,res) {
     api.getMatchingCourseItems('courseitems',res,'section_id',parseInt(req.query.section_id),req.query.item_type);
+});
+
+// Get all course items belonging to a specific section (not type specific) 
+app.get('/api/getAllCourseItemsBySection', function(req,res) {
+    api.getMatchingDocuments('courseitems',res,'section_id',parseInt(req.query.section_id));
 });
 
 // Add to database
