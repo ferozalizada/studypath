@@ -55,6 +55,10 @@ const routes: Routes = [
         outlet: 'timetable-gui'
       }
     ]
+  },
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   }
   
 ];
