@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Course } from '../../../classes/course';
+import { CourseItem } from '../../../classes/courseitem';
 import { Section } from '../../../classes/section';
 import { Student } from '../../../classes/student';
 import { ApiRequestsService } from '../../../services/api-requests.service';
@@ -18,6 +19,11 @@ import { constructDependencies } from '@angular/core/src/di/reflective_provider'
 })
 export class CourseListComponent implements OnInit {
   courses:Course[];
+  sections:Section[];
+
+  lectures:{};
+  labs:{};
+  dgds:{};
 
   results:Section[];
   test:String;
@@ -36,6 +42,27 @@ export class CourseListComponent implements OnInit {
     /* If console logs 'undefined' or an empty array its just because
        your database has no results for the given query */
   }
+
+  updateSections(data:Section[]) {
+    //This stuff is required
+    let sectionsArr = data;
+    this.sections = sectionsArr.map(item => new Section(item));
+    //This for loop is also broken as hell
+    for (let sec of this.sections) {
+        this.apiRequestsService.getCourseItemsBySection(this.updateSectionLectures.bind(this),sec.getId(),'LEC');
+    }
+  }
+
+  //Fucking broken as hell function
+  updateSectionLectures(data:CourseItem[]) {
+    if (data.length > 0) {
+      let lecArr = data;
+      let lecturesMapped = lecArr.map(item => new CourseItem(item));
+      this.lectures[lecturesMapped[0].getSectionId()] = lecturesMapped;
+    }
+  }
+
+
 
   constructor(private apiRequestsService: ApiRequestsService
     ,private courseDataService: CourseDataService
@@ -93,13 +120,20 @@ export class CourseListComponent implements OnInit {
     //console.log(this.results);
     //this.test = apiRequestsService.results;
     //console.log(apiRequestsService.results);
+    this.sections = [];
+    this.lectures = {};
 
   }
+
+  //this.sections = [];
+
 
   ngOnInit() {
   }
   selectCourse(course: Course):void{
     this.selectedObj = course;
     console.log("Selected Obj's code is: " + this.selectedObj.getCode());
+    this.apiRequestsService.getSectionsByCourse(this.updateSections.bind(this),this.selectedObj.getId());
+    
   }
 }

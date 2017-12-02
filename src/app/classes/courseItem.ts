@@ -9,8 +9,15 @@ export class CourseItem {
     private instructor:string;
     private location:string;
     
-    constructor(){
-        //...
+    constructor(obj:CourseItem){
+        this.id = obj.id;
+        this.section_id = obj.id;
+        this.day = obj.day;
+        this.startHour = obj.startHour;
+        this.endHour = obj.endHour;
+        this.type = obj.type;
+        this.instructor = obj.instructor;
+        this.location = obj.location;
     }
     
     setId (id:number) {

@@ -98,10 +98,19 @@ constructor(private http: HttpClient) {}
   
   //  Returns array of all course items that belong to a certain section, given a certain type (LEC, LAB, DGD...)
   getCourseItemsBySection(callback, section_id:number, item_type:string) {
-    console.log('Checkpoint 2');
     var params = new HttpParams().set('section_id',section_id.toString());
     params = params.append('item_type',item_type);
     this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getCourseItemsBySection', {
+      params
+    }).subscribe(data => {
+      callback(data.results);
+    });
+  }
+
+  // Returns array of all courses whose code contains specific sequecne (for searching)
+  getCoursesBySearch(callback, searchTerm:string) {
+    var params = new HttpParams().set('search_term',searchTerm);
+    this.http.get<Response>(AppSettings.constants.API_ENDPOINT + '/getCoursesBySearch', {
       params
     }).subscribe(data => {
       callback(data.results);

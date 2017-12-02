@@ -11,13 +11,25 @@
 	<li class="btn" class="list-group-item" data-toggle="collapse" 
 	href="#addtitional-info" *ngFor="let course of courses" 
 	(click)="selectCourse(course)">
-		{{course.getName()}}
+		{{course.getCode()}} - {{course.getName()}}
 		<div class="card" *ngIf="course === selectedObj" class="collapse " id="addtitional-info">
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">{{selectedObj.getId()}}</li>
-				<li class="list-group-item">{{selectedObj.getName()}}</li>
-				<li class="list-group-item">{{selectedObj.getCode()}}</li>
-				<li class="list-group-item">{{selectedObj.getDescription()}}</li>
+				<!--<li class="list-group-item">{{selectedObj.getName()}}</li>-->
+				<span *ngIf="sections.length > 0">
+					Lectures:
+					<li *ngFor="let section of sections">
+						{{section.getName()}}
+					</li>
+				</span>
+				<!--
+				<span *ngIf="labs.length">
+					Labs:
+					<li *ngFor="let lab of labs">
+						{{lab.getName()}}
+					</li>
+				</span>-->
+
+				
 			</ul>
 		</div>
 	</li>
