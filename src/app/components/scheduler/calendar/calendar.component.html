@@ -18,10 +18,16 @@
         <th scope="row" >{{hour}}</th>
 
         <td *ngFor="let day of days; let j=index"> 
-            <span *ngFor="let item of items" [ngClass]="{red: item.getDay()===day && (item.getStartHour() <= hour && item.getEndHour() >= hour)}">
-                <span *ngIf="item.getDay()===day && (item.getStartHour() <= hour && item.getEndHour() >= hour)">
-                    Test
-                  </span>
+            <span *ngFor="let item of items">
+                <span *ngIf="item.getDay()==day && (item.getStartHour() == hour)" #spanItem id="{{day}}{{i}}">
+                    {{item.getCode()}} <br /> {{item.getType()}} <br /> {{item.getInstructor()}} <br /> {{item.getLocation()}} {{setTdItems(spanItem.id,'start')}}
+                </span>
+                <span *ngIf="item.getDay()==day && (item.getEndHour() == hour)" #spanItem id="{{day}}{{i}}">
+                    {{setTdItems(spanItem.id,'end')}}
+                </span>
+                <span *ngIf="item.getDay()==day && (item.getStartHour() < hour && item.getEndHour() > hour)" #spanItem id="{{day}}{{i}}">
+                    {{setTdItems(spanItem.id,'between')}}
+                </span>
             </span>
         </td>
       </tr>

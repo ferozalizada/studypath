@@ -102,4 +102,19 @@ export class CalendarComponent implements OnInit {
       this.hours = ['8:00','9:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00'];
     }
   }
+
+  setTdItems(id, hour){
+    var tdItem =  document.getElementById(id).parentElement.parentElement;
+    
+    if(hour == 'start'){
+      tdItem.style.borderBottom = "none";
+    }else if(hour == 'end'){
+      tdItem.style.borderTop = "none";
+    }else if(hour == 'between'){
+      tdItem.style.borderBottom = "none";
+      tdItem.style.borderTop = "none";
+    }
+    
+    tdItem.style.backgroundColor = "yellow";
+  }
 }
