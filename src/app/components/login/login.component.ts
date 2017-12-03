@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   addUserIfUnique (stu) {
-    if (stu != undefined) {
+    if (stu == undefined) {
       this.apiRequestsService.addStudent(this.newStudent);
       alert("Your account has been created");
       //document.getElementById('exampleModel').modal('hide');
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
         this.newStudent.setStartYear(startYear);
         this.newStudent.setEndYear(endYear);
         this.newStudent.addSemester("Fall 2017");
-        this.apiRequestsService.getStudentById(this.addUserIfUnique.bind(this),this.studentID);
+        this.apiRequestsService.getStudentById(this.addUserIfUnique.bind(this),Number.parseInt(this.studentID));
       } else {
         alert("Student ID can only contain numbers!");
       }
