@@ -12,6 +12,7 @@ import { CalendarItem } from '../../../classes/calendaritem';
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  changeColor:boolean = true;
   days:string[];
   daysNumber:number[];
   month:string;
