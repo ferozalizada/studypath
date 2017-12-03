@@ -9,6 +9,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from '../../classes/user';
 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -86,7 +88,7 @@ export class LoginComponent implements OnInit {
     } else {
       alert ("Year must be a number in this century!");
     }
-    }
+    
   }
   
 }
