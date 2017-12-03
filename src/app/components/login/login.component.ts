@@ -6,6 +6,7 @@ import { ApiRequestsService } from '../../services/api-requests.service';
 import { Student } from '../../classes/student';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../../classes/user';
 
 
 @Component({
@@ -22,27 +23,35 @@ export class LoginComponent implements OnInit {
     private apiRequestsService: ApiRequestsService) { }
 
   ngOnInit() {
+    
   }
+
   login(studentID:string){
     this.studentID = studentID;
     //check if user exists in the database
     //display loading icon
     //add try catch for id number
-    this.apiRequestsService.getStudentById(this.userValidation.bind(this), studentID);
+    if(this.studentID != "")
+    {
+      this.apiRequestsService.getStudentById(this.userValidation.bind(this), studentID);
+    }
   }
+
   userValidation(user){
     //stop loading icon
     if(user !== undefined ){
-      setTimeout(alert("Welcome:" + user.firstName), 5000);
        //User exists then proceed with login
-      console.log(user);
+      User.userConnected = user;
+      this.userAuth.setUserID(Number.parseInt(this.studentID));
+      this.userAuth.setName(user.firstName);
+      this.userAuth.setUserLoginStatus();
       this.router.navigate(['/scheduler']);
     }else{
       //User does not exist ask if he wants his account to be created
-    
+      alert("User does not exist!");
     }
-    this.router.navigate(['/scheduler']);
   }
+
   registerUser(e){
     //registers the user
     this.studentID = e.target.elements[0].value;

@@ -1,4 +1,4 @@
-#btnLogin{
+#btnLogin, #btnRegister {
     cursor: pointer;
     font-weight:bold;
     font-weight:600;
@@ -6,7 +6,7 @@
     vertical-align: middle;
     font-size:16px;
     height: 40px;
-    margin-top:5px;
+    margin-top:25px;
 }
 
 #lblStudentID{
@@ -16,4 +16,8 @@
 
 #loginBox{
     margin-top:15%;
+}
+
+#btnRegister{
+    margin-top:20px !important;
 }

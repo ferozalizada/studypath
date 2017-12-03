@@ -2,12 +2,11 @@
   <form class="form-group">
     
     <label for="studentID" id="lblStudentID">Student ID</label>
-    <input type="text" #studentID class="form-control" />    
+    <input type="text" autofocus #studentID class="form-control" />    
     <button id="btnLogin" class="btn btn-primary col-12" type="submit"
     (click)="login(studentID.value)">Login</button>
-   
-     <a class="center-block">Register</a>
-    <button class="btn btn-primary col-12 " data-toggle="modal" data-target="#exampleModal">
+    
+    <button id="btnRegister" class="btn btn-primary col-12 " data-toggle="modal" data-target="#exampleModal">
       Register  
     </button>
 
