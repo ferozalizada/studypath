@@ -12,7 +12,7 @@ import { SemesterCourseViewComponent } from './components/semester-info/semester
 import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';
 import { SemesterViewComponent } from './components/semester-info/semester-view/semester-view.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { AuthGuard } from './authentication-guard/auth.guard';
 //Adds the routes the components and provides the http path for them 
 const routes: Routes = [
   {
@@ -42,6 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'scheduler',
+    canActivate: [AuthGuard],
     component: SchedulerComponent,
     children: [
       {
@@ -55,6 +56,10 @@ const routes: Routes = [
         outlet: 'timetable-gui'
       }
     ]
+  },
+  { path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   }
   
 ];

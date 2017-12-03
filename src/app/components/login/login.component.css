@@ -1,0 +1,23 @@
+#btnLogin, #btnRegister {
+    cursor: pointer;
+    font-weight:bold;
+    font-weight:600;
+    line-height: 20px;
+    vertical-align: middle;
+    font-size:16px;
+    height: 40px;
+    margin-top:25px;
+}
+
+#lblStudentID{
+    font-size:15px;
+    color:rgb(99, 99, 99);
+}
+
+#loginBox{
+    margin-top:15%;
+}
+
+#btnRegister{
+    margin-top:20px !important;
+}

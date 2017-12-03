@@ -35,6 +35,9 @@ import { SemesterCourseViewComponent } from './components/semester-info/semester
 import { SemesterDropdownComponent } from './components/semester-info/semester-dropdown/semester-dropdown.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
+import { UserAuthenticationService } from './services/user-authentication.service';
+import { AuthGuard } from './authentication-guard/auth.guard';
+import { RegisterationFormComponent } from './registeration-form/registeration-form.component';
 
 
 
@@ -50,7 +53,8 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     SchedulerComponent,
     SemesterInfoComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterationFormComponent
   ],
   imports: [
     FormsModule,
@@ -65,7 +69,9 @@ import { LoginComponent } from './components/login/login.component';
   providers: [
     CourseDataService,
     SemesterListService,
-    ApiRequestsService
+    ApiRequestsService,
+    UserAuthenticationService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
