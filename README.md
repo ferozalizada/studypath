@@ -12,11 +12,18 @@ Gordon Buxton-Simson (7916384)
 ## Deployment instructions
 
 Preconditions: npm installed, github installed, node.js installed
+
 Use command line to navigate to new folder
+
   > git init
+  
   > git clone https://github.com/ferozalizada/studypath.git
+  
   > npm install -g @angular/cli
+  
   > npm i
+  
   > ng serve
+  
 In browser, navigate to localhost:4200
 
