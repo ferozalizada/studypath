@@ -45,12 +45,12 @@ export class LoginComponent implements OnInit {
   }
   registerUser(e){
     //registers the user
-    var studentID = e.target.elements[0].value;
+    this.studentID = e.target.elements[0].value;
     var firstName = e.target.elements[1].value;
     var lastName = e.target.elements[2].value;
     var startYear = e.target.elements[3].value;
     var endYear = (Number.parseInt(startYear) + 4).toString();
-    console.log("Your student id  :"+studentID);
+    console.log("Your student id  :" + this.studentID);
 
     var newStudent = new Student(Number.parseInt(this.studentID), firstName, lastName);
     newStudent.setStartYear(startYear);
