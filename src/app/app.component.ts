@@ -9,7 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 export class AppComponent {
   hideNavbar:boolean;
 
-  constructor(private router:Router){}
+  constructor(public router:Router){}
 
   /*ngOnInit() {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
