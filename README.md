@@ -11,13 +11,9 @@ Gordon Buxton-Simson (7916384)
 
 ## Deployment instructions
 
-Preconditions: npm installed, github installed, node.js installed
+Preconditions: NodeJS, AngularCli required
 
-Use command line to navigate to new folder
-
-  > git init
-  
-  > git clone https://github.com/ferozalizada/studypath.git
+Navigate to the root directory and run
   
   > npm install -g @angular/cli
   
